@@ -1,60 +1,86 @@
-//introduction to data structuresand procedural programming
-// sum of all distinct elements from two sets
-def sum_of_distinct_elements(set1, set2):
-sum = 0
-for element in set1:
-if element not in set2:
-sum += element
-for element in set2:
-if element not in set1:
-sum += element
-return sum
+// String Manipulation Functions
 
-dot product of two vectors
-def dot_product(vector1, vector2):
-ps = 0
-for i in range(len(vector1)):
-ps += vector1[i] * vector2[i]
-return ps
-// sum of all elements in a list
-def sum_of_elements(lst):
-sum = 0
+// Reverse a String
+function reverseString(str) {
+  return str.split("").reverse().join("");
+}
 
+// Count Characters
+function countCharacters(str) {
+  return str.length;
+}
 
-// checked if vectors are orthogonal
-def
-check_orthogonal(vector1, vector2):
-for i in range(len(vector1)):
-if vector1[i] * vector2[i] != 0:
-return False
-return True
-for element in lst:
-sum += element
-return sum
-// check if two vectors are equal
-def check_equal(vector1, vector2):
-if len(vector1) != len(vector2):
-return False
-for i in range(len(vector1)):
-if vector1[i] != vector2[i]:
-return False
-return True
-// check if two vectors are perpendicular
+// Capitalize Words
+function capitalizeWords(sentence) {
+  return sentence
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
-set1 = {1, 2, 3}
-set2 = {3, 4, 5}
-ddistinct_sum = sum_of_distinct_elements(set1, set2)
-print("Sum of distinct elements:", distinct_sum)
-def check_perpendicular(vector1, vector2):
-for i in range(len(vector1)):
-if vector1[i] * vector2[i] != 0:
-return False
-return True
+// Array Functions
 
-vector_pairs = [(1, 2), (3, 4), (5, 6)]
-check_orthogonal(vector_pairs[0], vector_pairs[1])
-vector1 = [1, 2, 3]
-vector2 = [4, 5, 6]
-check_equal(vector1, vector2)
-// check if two vectors are parallel
-def check_parallel(vector1, vector2):
+// Find Maximum and Minimum
+function findMax(arr) {
+  return Math.max(...arr);
+}
+
+function findMin(arr) {
+  return Math.min(...arr);
+}
+
+// Sum of Array
+function sumArray(arr) {
+  return arr.reduce((sum, num) => sum + num, 0);
+}
+
+// Filter Array
+function filterArray(arr, condition) {
+  return arr.filter(condition);
+}
+
+// Mathematical Functions
+
+// Factorial
+function factorial(num) {
+  if (num === 0 || num === 1) return 1;
+  return num * factorial(num - 1);
+}
+
+// Prime Number Check
+function isPrime(num) {
+  if (num <= 1) return false;
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) return false;
+  }
+  return true;
+}
+
+// Fibonacci Sequence
+function generateFibonacci(n) {
+  let fib = [0, 1];
+  for (let i = 2; i < n; i++) {
+    fib.push(fib[i - 1] + fib[i - 2]);
+  }
+  return fib;
+}
+
+// Function Calls with Examples
+
+// String Manipulation Examples
+console.log(reverseString("hello")); // Output: "olleh"
+console.log(countCharacters("hello world")); // Output: 11
+console.log(capitalizeWords("hello world")); // Output: "Hello World"
+
+// Array Functions Examples
+const sampleArray = [3, 7, 1, 9, 5];
+
+console.log(findMax(sampleArray)); // Output: 9
+console.log(findMin(sampleArray)); // Output: 1
+console.log(sumArray(sampleArray)); // Output: 25
+console.log(filterArray(sampleArray, (num) => num > 5)); // Output: [7, 9]
+
+// Mathematical Functions Examples
+console.log(factorial(5)); // Output: 120
+console.log(isPrime(7)); // Output: true
+console.log(generateFibonacci(7)); // Output: [0, 1, 1, 2, 3, 5, 8]
