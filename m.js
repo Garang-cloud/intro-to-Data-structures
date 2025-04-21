@@ -1,32 +1,47 @@
-function minMax(arr) {
-  return [Math.min(...arr), Math.max(...arr)];
+//DOM
+// adjust quantity of items in cart
+document.querySelectorAll('plus-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        let quantity = parseInt(btn.parentElement.querySelector('quantity').innerText);
+        quantity++;
+        btn.parentElement.querySelector('quantity').innerText = quantity;
+    });
+});
+document.querySelectorAll('minus-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        let quantity = parseInt(btn.parentElement.querySelector('quantity').innerText);
+        if (quantity > 1) {
+            quantity--;
+            btn.parentElement.querySelector('quantity').innerText = quantity;
+        }
+    });
+});
+// remove item from cart
+document.querySelectorAll('remove-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        let item = btn.parentElement.parentElement;
+        item.parentElement.removeChild(item);
+    });
+});
+// like item
+document.querySelectorAll('like-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        let item = btn.parentElement.parentElement;
+        item.classList.toggle('liked');
+        if (item.classList.contains('liked')) {
+            btn.innerText = 'Unlike';
+        } else {
+            btn.innerText = 'Like';
+        }
+    });
+});
+// update total price
+function updateTotalPrice() {
+    let total = 0;
+    document.querySelectorAll('.cart-item').forEach((item) => {
+        let price = parseFloat(item.querySelector('.price').innerText);
+        let quantity = parseInt(item.querySelector('.quantity').innerText);
+        total += price * quantity;
+    });
+    document.querySelector('.total-price').innerText = total.toFixed(2);
 }
-
-// Example usage:
-console.log(minMax([1, 2, 3, 4, 5])); // Outputs: [1, 5]
-console.log(minMax([2334454, 5])); // Outputs: [5, 2334454]
-console.log(minMax([1])); // Outputs: [1, 1]
-console.log(minMax([])); // Outputs: [Infinity, -Infinity]
-console.log(minMax([1, 2, 3, 4, 5, -1])); // Outputs: [-1, 5]
-
-function sumOfCubes(arr) {
-    return arr.reduce((sum, num) => sum + Math.pow(num, 3), 0);
-}
-
-// Example usage:
-console.log(sumOfCubes([1, 5, 9])); // Outputs: 855
-console.log(sumOfCubes([3, 4, 5])); // Outputs: 216
-console.log(sumOfCubes([2]));       // Outputs: 8
-console.log(sumOfCubes([]));        // Outputs: 0
-console.log(sumOfCubes([0]));       // Outputs: 0
-function sumOfCubes(arr) {
-    return arr.reduce((sum, num) => sum + Math.pow(num, 3), 0);
-}
-function filterArray(arr) {
-    return arr.filter(item => typeof item === "number" && item >= 0);
-}
-
-// Testing the function:
-console.log(filterArray([1, "hello", 5, -2, "world", 0])); // Outputs: [1, 5, 0]
-console.log(filterArray([100, "JavaScript", 42]));        // Outputs: [100, 42]
-console.log(filterArray(["apple", "banana", "cherry"]));  // Outputs: []
